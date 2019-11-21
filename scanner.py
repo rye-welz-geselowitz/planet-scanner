@@ -2,7 +2,7 @@ from utils import (
     await_valid_input,
     print_progress_bar,
     clear,
-    print_table,
+    print_list,
     prompt_credentials,
 )
 from time import sleep
@@ -43,7 +43,7 @@ class Scanner():
         print('Scanning')
         print_progress_bar(self.scan_seconds)
         clear()
-        print_table(self.result_sets[self.next_scan_sensitivity_level])
+        print_list(self.result_sets[self.next_scan_sensitivity_level])
         # If our scanner has another, more sensitive result set available,
         # prepare to return it on the next scan. Otherwise stick with current
         # sensitivity level.

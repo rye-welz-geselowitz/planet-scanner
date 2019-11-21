@@ -44,20 +44,12 @@ def print_progress_bar(duration_seconds):
         # Update Progress Bar
         _printProgressBar(i + 1, l, prefix = 'Progress:', suffix = 'Complete', length = 50)
 
-def print_table(data_items):
-    titles = data_items[0].keys()
-    data = [titles] + [item.values() for item in data_items]
-    longest_string = sorted(
-        [item for sublist in data for item in sublist],
-        key=lambda x: len(x),
-        reverse=True
-    )[0]
-
-    for i, d in enumerate(data):
-        line = '|  '.join(str(x).ljust(len(longest_string)+4) for x in d)
-        print(line)
-        if i == 0:
-            print('-' * len(line))
+def print_list(items):
+    print('SCAN RESULTS')
+    print('-------------------------------------------')
+    for item in items:
+        print(f'* {item}')
+    print('-------------------------------------------')
     print()
 
 # https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console

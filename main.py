@@ -8,21 +8,21 @@ SCAN_SECONDS = 1
 
 
 PLANT_LIFE_DATA = [
-    {'name': 'banana', 'color': 'yellow', 'deliciousness': 'high' },
-    {'name': 'apple', 'color': 'red', 'deliciousness': 'medium' },
-    {'name': 'potato', 'color': 'poop-brown', 'deliciousness': 'v. low' },
+    'There is a yummy yellow banana',
+    'There is a kinda mealy red apple',
+    'I also found a delicious poop-brown potato!!!!'
 ]
 
 ANIMAL_LIFE_DATA = [
-    {'name': 'horse', 'color': 'red'},
-    {'name': 'giraffe', 'color': 'green' },
-    {'name': 'pony', 'color': 'poop-brown' },
+    'There is a red horse',
+    'There is a green giraffe',
+    'I also found a beautiful poop-brown pony!!!!'
 ]
 
 ANIMAL_LIFE_DATA_SENSITIVE = [
-    {'name': 'sensitive horse', 'color': 'red', 'senitivity_mode': 'is vegan'},
-    {'name': 'sensitive giraffe', 'color': 'green', 'senitivity_mode': 'cries lots'},
-    {'name': 'senstivie pony', 'color': 'poop-brown', 'senitivity_mode': 'is a "nice pony"'},
+    'There is a red horse who is vegan',
+    'There is a green giraffe who cries a lot',
+    'I also found a beautiful poop-brown pony who is "nice"!!!!'
 ]
 
 SCANNERS = [
