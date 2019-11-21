@@ -19,9 +19,15 @@ ANIMAL_LIFE_DATA = [
     {'name': 'pony', 'color': 'poop-brown' },
 ]
 
+ANIMAL_LIFE_DATA_SENSITIVE = [
+    {'name': 'sensitive horse', 'color': 'red', 'senitivity_mode': 'is vegan'},
+    {'name': 'sensitive giraffe', 'color': 'green', 'senitivity_mode': 'cries lots'},
+    {'name': 'senstivie pony', 'color': 'poop-brown', 'senitivity_mode': 'is a "nice pony"'},
+]
+
 SCANNERS = [
-    Scanner('Animal Life', 'About to scan for animal life', ANIMAL_LIFE_DATA, SCAN_SECONDS),
-    Scanner('Plant Life', 'Gonna scan for plant life!', PLANT_LIFE_DATA, SCAN_SECONDS),
+    Scanner('Animal Life', 'About to scan for animal life', [ANIMAL_LIFE_DATA, ANIMAL_LIFE_DATA_SENSITIVE], SCAN_SECONDS),
+    Scanner('Plant Life', 'Gonna scan for plant life!', [PLANT_LIFE_DATA], SCAN_SECONDS),
 ]
 
 def display_main_menu(state):
@@ -30,7 +36,7 @@ def display_main_menu(state):
     }
     while True:
         for label, scanner in label_to_scanner.items():
-            print(f'({label}) {scanner.name}')
+            print(f'({label}) {scanner.get_menu_item_label()}')
         await_valid_input(
             '\nScan for',
             sorted([k for k in label_to_scanner.keys()]),
