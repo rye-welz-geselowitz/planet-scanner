@@ -3,9 +3,7 @@ from utils import await_valid_input, clear, prompt_credentials
 from password import PASSWORD
 from time import sleep
 
-INITIAL_LOGIN_PROMPT = 'Please log in.'
 SCAN_SECONDS = 1
-
 
 PLANT_LIFE_DATA = [
     'There is a yummy yellow banana',

@@ -4,19 +4,19 @@ from time import sleep
 def _clean(string):
     return string.strip().lower()
 
-INCORRECT_PASSWORD_MESSAGE = 'That password is incorrect.'
+INCORRECT_PASSWORD_MESSAGE = 'Unauthorized'
 INCORRECT_PASSWORD_MESSAGE_DURATION_SECONDS = 2
-CREDENTIALS_PROMPT = 'Please enter captain\'s credentials: '
+CREDENTIALS_PROMPT = "Enter captain's override code to proceed"
 
 def prompt_credentials(state, correct_password, on_success, on_fail):
-    user_input = input(CREDENTIALS_PROMPT)
+    user_input = input(f'{CREDENTIALS_PROMPT.upper()}: ')
     if user_input==correct_password:
         state['is_logged_in']=True
         clear()
         on_success()
     else:
         clear()
-        print(INCORRECT_PASSWORD_MESSAGE)
+        print(INCORRECT_PASSWORD_MESSAGE.upper())
         sleep(INCORRECT_PASSWORD_MESSAGE_DURATION_SECONDS)
         clear()
         on_fail()
