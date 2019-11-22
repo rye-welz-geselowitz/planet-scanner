@@ -1,2 +1,4 @@
 # Planet Scanner
-Tool for cyberpunk murder mystery party! 
+Interactive prop for cyberpunk murder mystery party!
+
+`python3 -m main`

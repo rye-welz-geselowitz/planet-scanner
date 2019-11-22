@@ -4,19 +4,19 @@ from time import sleep
 def _clean(string):
     return string.strip().lower()
 
-INCORRECT_PASSWORD_MESSAGE = 'That password is incorrect.'
+INCORRECT_PASSWORD_MESSAGE = 'Unauthorized. Logging authorization attempt.'
 INCORRECT_PASSWORD_MESSAGE_DURATION_SECONDS = 2
-CREDENTIALS_PROMPT = 'Please enter captain\'s credentials: '
+CREDENTIALS_PROMPT = "Enter captain's override code to proceed"
 
 def prompt_credentials(state, correct_password, on_success, on_fail):
-    user_input = input(CREDENTIALS_PROMPT)
+    user_input = input(f'{CREDENTIALS_PROMPT.upper()}: ')
     if user_input==correct_password:
         state['is_logged_in']=True
         clear()
         on_success()
     else:
         clear()
-        print(INCORRECT_PASSWORD_MESSAGE)
+        print_red(INCORRECT_PASSWORD_MESSAGE.upper())
         sleep(INCORRECT_PASSWORD_MESSAGE_DURATION_SECONDS)
         clear()
         on_fail()
@@ -32,33 +32,32 @@ def await_valid_input(prompt, valid_inputs, process_valid_input):
             clear()
             return process_valid_input(cleaned_input)
         else:
-            print(f'Please enter valid input: {", ".join(valid_inputs)}')
+            print(f'\renter valid input: {", ".join(valid_inputs)}'.upper())
+            print()
 
 def print_progress_bar(duration_seconds):
     l = 100
     # Initial call to print 0% progress
-    _printProgressBar(0, l, prefix = 'Progress:', suffix = 'Complete', length = 50)
+    _printProgressBar(0, l, prefix = 'PROGRESS:', suffix = 'COMPLETE', length = 50)
     for i, item in enumerate(list(range(0, l))):
         # Do stuff...
         sleep(duration_seconds / l)
         # Update Progress Bar
-        _printProgressBar(i + 1, l, prefix = 'Progress:', suffix = 'Complete', length = 50)
+        _printProgressBar(i + 1, l, prefix = 'PROGRESS:', suffix = 'COMPLETE', length = 50)
 
-def print_table(data_items):
-    titles = data_items[0].keys()
-    data = [titles] + [item.values() for item in data_items]
-    longest_string = sorted(
-        [item for sublist in data for item in sublist],
-        key=lambda x: len(x),
-        reverse=True
-    )[0]
-
-    for i, d in enumerate(data):
-        line = '|  '.join(str(x).ljust(len(longest_string)+4) for x in d)
-        print(line)
-        if i == 0:
-            print('-' * len(line))
+def print_list(items):
+    print('SCAN RESULTS')
+    print('-------------------------------------------')
+    for item in items:
+        print_green(f'* {item}')
+    print('-------------------------------------------')
     print()
+
+def print_green(text): print("\033[92m {}\033[00m" .format(text))
+
+def print_red(text): print("\033[91m {}\033[00m" .format(text))
+
+def print_cyan(skk): print("\033[96m {}\033[00m" .format(skk))
 
 # https://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
 def _printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
